@@ -1,3 +1,5 @@
+This is a quick, basic example of using Mocha+Chai+Supertest to test an API.
+
 # Setup
 
 * clone
