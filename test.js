@@ -1,5 +1,3 @@
-const assert = require('chai').assert;
-const expect = require('chai').expect;
 const should = require('chai').should();
 const supertest = require('supertest');
 const endpoint = 'https://postman-echo.com';
@@ -12,5 +10,19 @@ describe('/get', () => {
         
         response.body.args.greeting.should.equal('Good morning!');
         response.body.args.farewell.should.equal('Toodles!');
+    })
+})
+
+describe('/post', () => {
+    it('returns the form data you pass it', async () => {
+        const formData = {
+            username: 'morleym',
+            password: 'VerySecureTrustMe'
+        }
+
+        const response = await request.post('/post')
+            .send({formData});
+        
+        response.body.data.formData.should.deep.equal(formData);
     })
 })
